@@ -210,4 +210,1081 @@ NameError: name 'coodr_fld' is not defined
 >>> 
 >>> newlayer.CreateField(coord_fld)
 0
+>>> >>> i = lyr.GetLayerDefn().GetFieldIndex('Sal_AlkCL')
+>>> i
+0
+>>> changedfld = ogr.FieldDefn ('saltype', OFTInteger)
+
+Traceback (most recent call last):
+  File "<pyshell#66>", line 1, in <module>
+    changedfld = ogr.FieldDefn ('saltype', OFTInteger)
+NameError: name 'OFTInteger' is not defined
+>>> changedfld = ogr.FieldDefn ('saltype', ogr.OFTInteger)
+>>> lyr.AlterFieldDefn (i, chanfedfld, ogr.ALTER_NAME_FLAG)
+
+Traceback (most recent call last):
+  File "<pyshell#68>", line 1, in <module>
+    lyr.AlterFieldDefn (i, chanfedfld, ogr.ALTER_NAME_FLAG)
+NameError: name 'chanfedfld' is not defined
+>>> lyr.AlterFieldDefn (i, changedfld, ogr.ALTER_FIELD_NAME)
+
+Traceback (most recent call last):
+  File "<pyshell#69>", line 1, in <module>
+    lyr.AlterFieldDefn (i, changedfld, ogr.ALTER_FIELD_NAME)
+AttributeError: 'module' object has no attribute 'ALTER_FIELD_NAME'
+>>> lyr.AlterFieldDefn(i, changedfld, ogr.ALTER_FIELD_FLAG)
+
+Traceback (most recent call last):
+  File "<pyshell#70>", line 1, in <module>
+    lyr.AlterFieldDefn(i, changedfld, ogr.ALTER_FIELD_FLAG)
+AttributeError: 'module' object has no attribute 'ALTER_FIELD_FLAG'
+>>> lyr.AlterFieldDefn (i, changedfld, ogr.ALTER_NAME_FLAG )
+6
+>>> for field in lyr.schema :
+	print (field.name)
+
+	
+Sal_AlkCL
+>>> print (lyr.GetLayerDefn())
+<osgeo.ogr.FeatureDefn; proxy of <Swig Object of type 'OGRFeatureDefnShadow *' at 0x7f7bb41a3810> >
+>>> print (lyr.GetLayerDefn().GetFieldIndex('Sal_AlkCL'))
+0
+>>> changedfld = ogr.FieldDefn ('saltype', ogr.OFTInteger)
+>>> lyr.AlterFieldDefn(0, changedfld, ogr.ALTER_NAME_FLAG )
+0
+>>> for field in lyr.schema :
+	print (field.name)
+
+	
+saltype
+>>> lyr.CreateField(ogr.FieldDefn ('ID', ogr.OFTInteger )
+		)
+0
+>>> for field in lyr.schema :
+	print (field.name)
+
+	
+saltype
+ID
+>>> n=1
+>>> for feat in lyr :
+	feat.SetField('ID', n)
+	lyr.SetFeature(feat)
+	n += 1
+
+	
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+>>> datasource.ExecuteSQL('REPACK saltype')
+>>> datasource.ExecuteSQL('REPACK saline ')
+>>> datasource.ExecuteSQL('REPACK' + lyr.GetName())
+>>> datasource.ExecuteSQL ('REPACK saline')
+>>> # pay attention to blank spaces!! 'saline' is not 'saline '
+>>> 
+>>> def print_layers (fn) :
+	ds=org.Open(fn, 0)
+	if ds is None :
+		print 'not there'
+	else :
+		print 'ds open'
+
+		
+>>> def print_layers (fn) :
+	ds = org.Open(fn, 0)
+	if ds is None :
+		print 'not open'
+	else :
+		print 'ds open'
+	for i in range (ds.GetLayerCount()) :
+		alyrs = ds.GetLayer(i)
+		print ('{0};{1}'.format (i, alyrs.GetName())
+
+
+
+
+
+
+		       )
+
+		
+>>> print_layers (shapefile)
+
+Traceback (most recent call last):
+  File "<pyshell#132>", line 1, in <module>
+    print_layers (shapefile)
+  File "<pyshell#131>", line 2, in print_layers
+    ds = org.Open(fn, 0)
+NameError: global name 'org' is not defined
+>>> def print_layers (fn) :
+	ds = ogr.Open(fn, 0)
+	if ds None :
+		
+SyntaxError: invalid syntax
+>>> def print_layers (fn) ;
+SyntaxError: invalid syntax
+>>> def print_layers (fn) :
+	ds = ogr.Open(fn, 0)
+	if ds is None :
+		print ('ds not open')
+	else :
+		print ('ds open!')
+	for i in range (ds.GetLayerCount()) :
+		alyrs=ds.GetLayer(i)
+		print ('{0}:{1}'.format(i, alyrs.GetName()))
+
+		
+>>> print_layers (shapefile)
+ds open!
+0:saline
+>>> orginfo datasource
+SyntaxError: invalid syntax
+>>> ogrinfo datasource
+SyntaxError: invalid syntax
+>>> ogrinfo "datasource"
+SyntaxError: invalid syntax
+>>> ogrinfo 'datasource'
+SyntaxError: invalid syntax
+>>> ogrinfo
+
+Traceback (most recent call last):
+  File "<pyshell#152>", line 1, in <module>
+    ogrinfo
+NameError: name 'ogrinfo' is not defined
+>>> url= 'WFS:http://gis.srh.noaa.gov/arcgis/services/watchWarn/' +\
+     'MapServer/WFSServer'
+>>> print_layers(url)
+ds not open
+
+Traceback (most recent call last):
+  File "<pyshell#155>", line 1, in <module>
+    print_layers(url)
+  File "<pyshell#146>", line 7, in print_layers
+    for i in range (ds.GetLayerCount()) :
+AttributeError: 'NoneType' object has no attribute 'GetLayerCount'
+>>> # no web mapping for now ! It 's on the TO DO list!
 >>> 
