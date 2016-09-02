@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2" xmlns:gx="http://www.google.com/kml/ext/2.2">
+    <Document id="feat_3">
+        <name>mysimplekmlfile</name>
+        <Snippet/>
+        <Placemark id="feat_4">
+            <name>Kirstenbosch</name>
+            <description>A botanical garden</description>
+            <Point id="geom_3">
+                <coordinates>10,10,0.0</coordinates>
+            </Point>
+	   <Polygon>
+			<tessellate>1</tessellate>
+			<outerBoundaryIs>
+				<LinearRing>
+					<coordinates>
+						25.58224300486879,45.65083938115667,0 25.5821621085693,45.65105851366731,0 25.58164371335188,45.65099276754336,0 25.58171433902399,45.65075234061973,0 25.58224300486879,45.65083938115667,0 
+					</coordinates>
+				</LinearRing>
+			</outerBoundaryIs>
+		</Polygon>
+        </Placemark>
+    </Document>
+</kml>
