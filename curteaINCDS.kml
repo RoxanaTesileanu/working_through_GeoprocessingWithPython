@@ -4,8 +4,8 @@
         <name>mysimplekmlfile</name>
         <Snippet/>
         <Placemark id="feat_4">
-            <name>Kirstenbosch</name>
-            <description>A botanical garden</description>
+            <name>curtea INCDS</name>
+            <description>INCDS Research Station in Brasov</description>
             <Point id="geom_3">
                 <coordinates>10,10,0.0</coordinates>
             </Point>
