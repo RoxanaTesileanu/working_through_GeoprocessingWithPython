@@ -17,4 +17,24 @@ Type "copyright", "credits" or "license()" for more information.
 
 	
 
+>>> tower = ogr.Geometry(wkt= 'POINT (2.294694 46.858093)')
+>>> tower.AssignSpatialReference(
+	osr.SpatialReference(osr.SRS_WKT_WGS84))
+>>> print (lyr.GetSpatialRef())
+GEOGCS["GCS_WGS_1984",
+    DATUM["WGS_1984",
+        SPHEROID["WGS_84",6378137.0,298.257223563]],
+    PRIMEM["Greenwich",0.0],
+    UNIT["Degree",0.017453292519943295]]
+>>> lyr_sr = lyr.GetSpatialRef()
+>>> lyr_sr.GetAuthorityCode('Geogcs')
+>>> lyr_sr.GetAttrValue('geogcs')
+'GCS_WGS_1984'
+>>> lyr_sr.AutoIdentifyEPSG()
+0
+>>> print (lyr_sr.AutoIdentifyEPSG())
+0
+>>> lyr_sr.GetAuthorityCode('Geogcs')
+'4326'
+>>> # both geometries (union_poly and tower) are provided with SRS info, so you can use geom.TransformTo(dest_sr) to reproject them.
 >>> 

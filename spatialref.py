@@ -67,4 +67,206 @@ PROJCS["ETRS_1989_LAEA",
 >>> laea_sr = lyr2.GetSpatialRef()
 >>> laea_sr.GetAttrValue('PROJCS')
 'ETRS_1989_LAEA'
+>>> laea_sr.GetAttrValue('Authority')
+>>> laea_sr.GetAttrValue('AUTHORITY')
+>>> # no authority (ESPG)
+>>> if lyr.GetSpatialRef().IsGeographic() is True : print 'SRS is geographic'
+else : 'SRS not geographic'
+
+'SRS not geographic'
+>>> if lyr.GetSpatialRef().IsProjected() is True : print 'SRS is projected'
+else : 'SRS not projected'
+
+'SRS not projected'
+>>> wgs84_sr = lyr.GetSpatialRef()
+>>> wgs84_sr.GetAttrValue ('Authority')
+'EPSG'
+>>> wgs84_sr.GetAttrValues ('Authority', 1)
+
+Traceback (most recent call last):
+  File "<pyshell#34>", line 1, in <module>
+    wgs84_sr.GetAttrValues ('Authority', 1)
+  File "/usr/lib/python2.7/dist-packages/osgeo/osr.py", line 578, in <lambda>
+    __getattr__ = lambda self, name: _swig_getattr(self, SpatialReference, name)
+  File "/usr/lib/python2.7/dist-packages/osgeo/osr.py", line 74, in _swig_getattr
+    return _swig_getattr_nondynamic(self, class_type, name, 0)
+  File "/usr/lib/python2.7/dist-packages/osgeo/osr.py", line 69, in _swig_getattr_nondynamic
+    return object.__getattr__(self, name)
+AttributeError: type object 'object' has no attribute '__getattr__'
+>>> wgs84_sr.GetAttrValue ('Authority', 1)
+'4326'
+>>> # the ESPG code
+>>> wgs84_sr.GetAuthorityCode('datum')
+'6326'
+>>> wgs84_sr.GetAuthorityCode('unit')
+'9122'
+>>> wgs84_sr.GetAuthorityCode('geogcs')
+'4326'
+>>> wgs84_sr.GetAuthorityCode ('spheroid')
+'7030'
+>>> laea_sr.GetProjParm(osr.SRS_PP_FALSE_EASTING)
+
+Traceback (most recent call last):
+  File "<pyshell#41>", line 1, in <module>
+    laea_sr.GetProjParm(osr.SRS_PP_FALSE_EASTING)
+NameError: name 'osr' is not defined
+>>> from osgeo import osr
+>>> laea_sr.GetProjParm(osr.SRS_PP_FALSE_EASTING)
+4321000.0
+>>> # create a spatial reference objects
+>>> # you create a blank SpatialReference object with SpatialReference()
+>>> mysr= osr.SpatialReference()
+>>> mysr.ImportFromESPG(26912) # you look up the ESPG code
+
+Traceback (most recent call last):
+  File "<pyshell#47>", line 1, in <module>
+    mysr.ImportFromESPG(26912) # you look up the ESPG code
+  File "/usr/lib/python2.7/dist-packages/osgeo/osr.py", line 578, in <lambda>
+    __getattr__ = lambda self, name: _swig_getattr(self, SpatialReference, name)
+  File "/usr/lib/python2.7/dist-packages/osgeo/osr.py", line 74, in _swig_getattr
+    return _swig_getattr_nondynamic(self, class_type, name, 0)
+  File "/usr/lib/python2.7/dist-packages/osgeo/osr.py", line 69, in _swig_getattr_nondynamic
+    return object.__getattr__(self, name)
+AttributeError: type object 'object' has no attribute '__getattr__'
+>>> mysr.ImportFromESPG(26912) # you look up the ESPG code
+
+Traceback (most recent call last):
+  File "<pyshell#48>", line 1, in <module>
+    mysr.ImportFromESPG(26912) # you look up the ESPG code
+  File "/usr/lib/python2.7/dist-packages/osgeo/osr.py", line 578, in <lambda>
+    __getattr__ = lambda self, name: _swig_getattr(self, SpatialReference, name)
+  File "/usr/lib/python2.7/dist-packages/osgeo/osr.py", line 74, in _swig_getattr
+    return _swig_getattr_nondynamic(self, class_type, name, 0)
+  File "/usr/lib/python2.7/dist-packages/osgeo/osr.py", line 69, in _swig_getattr_nondynamic
+    return object.__getattr__(self, name)
+AttributeError: type object 'object' has no attribute '__getattr__'
+>>> mysr.ImportFromESPG(26912)
+
+Traceback (most recent call last):
+  File "<pyshell#49>", line 1, in <module>
+    mysr.ImportFromESPG(26912)
+  File "/usr/lib/python2.7/dist-packages/osgeo/osr.py", line 578, in <lambda>
+    __getattr__ = lambda self, name: _swig_getattr(self, SpatialReference, name)
+  File "/usr/lib/python2.7/dist-packages/osgeo/osr.py", line 74, in _swig_getattr
+    return _swig_getattr_nondynamic(self, class_type, name, 0)
+  File "/usr/lib/python2.7/dist-packages/osgeo/osr.py", line 69, in _swig_getattr_nondynamic
+    return object.__getattr__(self, name)
+AttributeError: type object 'object' has no attribute '__getattr__'
+>>> mysr.ImportFromESPG('26912')
+
+Traceback (most recent call last):
+  File "<pyshell#50>", line 1, in <module>
+    mysr.ImportFromESPG('26912')
+  File "/usr/lib/python2.7/dist-packages/osgeo/osr.py", line 578, in <lambda>
+    __getattr__ = lambda self, name: _swig_getattr(self, SpatialReference, name)
+  File "/usr/lib/python2.7/dist-packages/osgeo/osr.py", line 74, in _swig_getattr
+    return _swig_getattr_nondynamic(self, class_type, name, 0)
+  File "/usr/lib/python2.7/dist-packages/osgeo/osr.py", line 69, in _swig_getattr_nondynamic
+    return object.__getattr__(self, name)
+AttributeError: type object 'object' has no attribute '__getattr__'
+>>> mysr.ImportFromEPSG(26912)
+0
+>>> # you look up the EPSG code (European Petroleum Survey Group)
+>>> mylaea_sr = osr.SpatialReference()
+>>> mylaea_sr.ImportFromEPSG(3035)
+0
+>>> mylaea_sr.GetAttrValue('projcs')
+'ETRS89 / LAEA Europe'
+>>> mylaea2_sr = osr.SpatialReference()
+>>> mylaea_sr.ImportFromProj4('''+proj=laea +lat_0=52 +lon_0=10 +x_0=4321000 +y_0=3210000 +ellps=GRS80 +units=m +no_defs'''
+			  )
+0
+>>> mylaea2_sr.GetAttrValue('projcs')
+>>> 
+>>> mylaea2_sr.GetAttrValue('geogcs')
+>>> mylaea_sr.ImportFromProj4('''+proj=laea +lat_0=52 +lon_0=10 +x_0=4321000 +y_0=3210000 +ellps=GRS80 +units=m +datum=wgs84 +no_defs''')
+0
+>>> mylaea2_sr.GetAttrValue('projcs')
+>>> print mylaea2_sr
+
+>>> print mylaea2_sr.AutoIdentifyEPSG()
+7
+>>> mylaea2_sr.AutoIdentifyEPSG()
+7
+>>> mylaea2_sr.GetAttrValue('projcs')
+>>> # I guess I prefer the EPSG codes..
+>>> mylaea2_sr.ImportFromUrl(http://spatialreference.org/ref/epsg/3035/proj4js/)
+SyntaxError: invalid syntax
+>>> mylaea2_sr.ImportFromUrl('http://spatialreference.org/ref/epsg/3035/proj4js/')
+6
+>>> mylaea2_sr.ImportFromUrl('http://spatialreference.org/ref/epsg/3035/proj4/')
+0
+>>> mylaea2_sr.GetAttrValue('projcs')
+'unnamed'
+>>> mylaea2_sr.GetAttrValue('datum')
+'unknown'
+>>> mylaea2_sr.GetAttrValue('sheroid')
+>>> mylaea2_sr.GetAttrValue('spheroid')
+'GRS80'
+>>> mylaea2_sr.GetAttrValue('projection')
+'Lambert_Azimuthal_Equal_Area'
+>>> mylaea_sr.GetAttrValue('projection')
+'Lambert_Azimuthal_Equal_Area'
+>>> mylaea_sr.GetAttrValue('authority')
+'EPSG'
+>>> mylaea2_sr.GetAttrValue('authority')
+>>> 
+>>> wkt = '''PROJCS["ETRS_1989_LAEA",
+		GEOGCS["GCS_ETRS_1989,
+			DATUM["European_Terrestrial_Reference_System_1989",
+				SPHEROID["GRS_1980", 6378137.0, 298.257222101]],
+			PERIMEM["Greenwich",0.0],
+			UNIT["Degree",0.0174532925199433]],
+		PROJECTION["Lambert_Azimuthal_Equal_Area"],
+		PARAMETER["False_Easting",4321000.0],
+		PARAMETER["False_Northing",3210000.0],
+		PARAMETER["longitude_of_center",10.0],
+		PARAMETER["latitude_of_center", 52.0],
+		UNIT["Meter",1.0]]'''
+>>> mylaea_wkt=osr.SpatialReference(wkt)
+>>> mylaea_wkt.GetAttrValue('projcs')
+
+Traceback (most recent call last):
+  File "<pyshell#96>", line 1, in <module>
+    mylaea_wkt.GetAttrValue('projcs')
+  File "/usr/lib/python2.7/dist-packages/osgeo/osr.py", line 658, in GetAttrValue
+    return _osr.SpatialReference_GetAttrValue(self, *args)
+TypeError: in method 'SpatialReference_GetAttrValue', argument 1 of type 'OSRSpatialReferenceShadow *'
+>>> wkt = '''PROJCS["ETRS_1989_LAEA",
+		GEOGCS["GCS_ETRS_1989,
+			DATUM["European_Terrestrial_Reference_System_1989",
+				SPHEROID["GRS_1980",6378137.0,298.257222101]],
+			PERIMEM["Greenwich",0.0],
+			UNIT["Degree",0.0174532925199433]],
+		PROJECTION["Lambert_Azimuthal_Equal_Area"],
+		PARAMETER["False_Easting",4321000.0],
+		PARAMETER["False_Northing",3210000.0],
+		PARAMETER["longitude_of_center",10.0],
+		PARAMETER["latitude_of_center",52.0],
+		UNIT["Meter",1.0]]'''
+>>> mylaea_wkt=osr.SpatialReference(wkt)
+>>> mylaea_wkt.GetAttrValue('projcs')
+
+Traceback (most recent call last):
+  File "<pyshell#99>", line 1, in <module>
+    mylaea_wkt.GetAttrValue('projcs')
+  File "/usr/lib/python2.7/dist-packages/osgeo/osr.py", line 658, in GetAttrValue
+    return _osr.SpatialReference_GetAttrValue(self, *args)
+TypeError: in method 'SpatialReference_GetAttrValue', argument 1 of type 'OSRSpatialReferenceShadow *'
+>>> wkt = '''PROJCS["ETRS_1989_LAEA",
+    GEOGCS["GCS_ETRS_1989",
+        DATUM["European_Terrestrial_Reference_System_1989",
+            SPHEROID["GRS_1980",6378137.0,298.257222101]],
+        PRIMEM["Greenwich",0.0],
+        UNIT["Degree",0.0174532925199433]],
+    PROJECTION["Lambert_Azimuthal_Equal_Area"],
+    PARAMETER["False_Easting",4321000.0],
+    PARAMETER["False_Northing",3210000.0],
+    PARAMETER["longitude_of_center",10.0],
+    PARAMETER["latitude_of_center",52.0],
+    UNIT["Meter",1.0]]'''
+>>> mylaea_wkt=osr.SpatialReference(wkt)
+>>> mylaea_wkt.GetAttrValue('projcs')
+'ETRS_1989_LAEA'
+>>> # so you can use a WKT string to import the information in a spatial reference object!
 >>> 

@@ -29,4 +29,40 @@ NameError: name 'ogr' is not defined
 >>> # but the real distance is 5!
 >>> 
 >>> # OGR DOESN'T TAKE Z VALUES INTO ACCOUNT WHEN PERFORMING SPATIAL OPERATIONS!
->>> 
+>>> ring = ogr.Geometry(ogr.wkbLinearRing)
+>>> ring.AddPoint(10, 10)
+>>> ring.AddPoint(10, 20)
+>>> ring.AddPoint(20, 10)
+>>> ring.AddPoint(20, 20)
+>>> poly_2d = ogr.Geometry(ogr.wkbPolygon)
+>>> poly_2d.AddGeometry(ring)
+0
+>>> poly_2d.CloseRings()
+>>> print(poly_2d.GetArea())
+0.0
+>>> ring = ogr.Geometry(ogr.wkbLinearRing)
+>>> ring.AddPoint(10, 10)
+>>> poly_2d.IsValid()
+False
+>>> ring.AddPoint(10, 20)
+>>> ring.AddPoint(20,20)
+>>> ring.AddPoint(20, 10)
+>>> poly_2d.ogr.Geometry(ogr.wkbPolygon)
+
+Traceback (most recent call last):
+  File "<pyshell#36>", line 1, in <module>
+    poly_2d.ogr.Geometry(ogr.wkbPolygon)
+  File "/usr/lib/python2.7/dist-packages/osgeo/ogr.py", line 4169, in <lambda>
+    __getattr__ = lambda self, name: _swig_getattr(self, Geometry, name)
+  File "/usr/lib/python2.7/dist-packages/osgeo/ogr.py", line 74, in _swig_getattr
+    return _swig_getattr_nondynamic(self, class_type, name, 0)
+  File "/usr/lib/python2.7/dist-packages/osgeo/ogr.py", line 69, in _swig_getattr_nondynamic
+    return object.__getattr__(self, name)
+AttributeError: type object 'object' has no attribute '__getattr__'
+>>> poly_2d = ogr.Geometry(ogr.wkbPolygon)
+>>> poly_2d.AddGeometry(ring)
+0
+>>> poly_2d.CloseRings()
+>>> print(poly_2d.GetArea())
+100.0
+>>> # again if we were to take a 2.5D geometry object it will return a flawed answer! 

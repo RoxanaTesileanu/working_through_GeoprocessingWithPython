@@ -6,9 +6,6 @@
         <Placemark id="feat_4">
             <name>curtea INCDS</name>
             <description>INCDS Research Station in Brasov</description>
-            <Point id="geom_3">
-                <coordinates>10,10,0.0</coordinates>
-            </Point>
 	   <Polygon>
 			<tessellate>1</tessellate>
 			<outerBoundaryIs>
