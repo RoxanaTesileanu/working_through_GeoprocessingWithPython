@@ -15,4 +15,6 @@ TypeError: Dataset_GetRasterBand() takes exactly 2 arguments (1 given)
 >>> in_band = in_ds.GetRasterBand(1)
 >>> # I don't have 3 bands, I will just make a copy of the data to see how the GTiff driver works and how a raster data file is created.
 >>> 
->>> 
+>>> gtiff_driver = gdal.GetDriverByName('GTiff')
+>>> new_ds = gtiff_driver.Create('sacele.tif', in_band.XSize, in_band.YSize, 1, in_band.DataType)
+>>> new_ds
