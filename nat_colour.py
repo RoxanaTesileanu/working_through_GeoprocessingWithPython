@@ -68,4 +68,8 @@ AttributeError: 'NoneType' object has no attribute 'ComputeStatistics'
 [0.0, 255.0, 114.59106919191782, 46.996522069645444]
 [0.0, 255.0, 129.4003254403454, 35.16296213678928]
 [0.0, 255.0, 89.25016434331657, 48.85975802449811]
+>>> # let see if I can build overviews:
+>>> nat_colour_ds.BuildOverviews('average', [2,4,8,16,32])
+0
+>>> del nat_colour_ds
 >>> 
