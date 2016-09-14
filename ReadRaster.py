@@ -46,4 +46,14 @@ AttributeError: type object 'object' has no attribute '__getattr__'
 	
 SyntaxError: invalid syntax
 >>> out_ds.FlushCache()
+>>> for i in range (num_bands) :
+	out_ds.GetRasterBand(i +1).ComputeStatistics(False)
+
+	
+[0.0, 255.0, 114.72168191909893, 46.51511237481718]
+[0.0, 255.0, 129.53270699084854, 34.76495241850529]
+[0.0, 255.0, 89.38699301456653, 48.387798676899195]
+>>> out_ds.BuildOverviews('average', [2,4,8,16])
+0
+>>> del out_ds
 >>> 
