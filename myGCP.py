@@ -222,3 +222,75 @@ SyntaxError: invalid syntax
 	 gdal.GCP(518.7, -248.6, 0, 519, 250),
 	 619, -215.3, 0, 621, 218)]
 >>> 
+ds.SetGCPs( gcps, sr.ExportToWkt())
+
+Traceback (most recent call last):
+  File "<pyshell#62>", line 2, in <module>
+    ds.SetGCPs( gcps, sr.ExportToWkt())
+  File "/usr/lib/python2.7/dist-packages/osgeo/gdal.py", line 859, in SetGCPs
+    return _gdal.Dataset_SetGCPs(self, *args)
+SystemError: error return without exception set
+>>> ds.SetGCPs( gcps, sr.ExportToWkt())
+
+Traceback (most recent call last):
+  File "<pyshell#63>", line 1, in <module>
+    ds.SetGCPs( gcps, sr.ExportToWkt())
+  File "/usr/lib/python2.7/dist-packages/osgeo/gdal.py", line 859, in SetGCPs
+    return _gdal.Dataset_SetGCPs(self, *args)
+SystemError: error return without exception set
+>>> ds.SetGCPs( gcps, sr.ExportToWkt())
+
+Traceback (most recent call last):
+  File "<pyshell#64>", line 1, in <module>
+    ds.SetGCPs( gcps, sr.ExportToWkt())
+  File "/usr/lib/python2.7/dist-packages/osgeo/gdal.py", line 859, in SetGCPs
+    return _gdal.Dataset_SetGCPs(self, *args)
+SystemError: error return without exception set
+>>> gcps = [(gdal.GCP(232.6, -298.4,0, 233, 302),
+	 gdal.GCP(535.1, -283.1, 0, 536, 286),
+	 gdal.GCP(518.7, -248.6, 0, 519, 250),
+	 619, -215.3, 0, 621, 218)]
+>>> gdal_translate -of GTiff -gcp 232.755 302.041 232.61 -301.186 -gcp 536.327 286.224 535.365 -284.79 -gcp 519.49 250 518.97 -250.868 -gcp 621.02 217.857 619.322 -216.946 "/home/roxana/working_through_GeoprocessingWithPython/myaerial.tif" "/tmp/myaerial.tif"
+gdalwarp -r near -order 1 -co COMPRESS=NONE  "/tmp/myaerial.tif" "/home/roxana/working_through_GeoprocessingWithPython/usingGCPs"
+SyntaxError: invalid syntax
+>>> gdal.translate.of GTiff -gcp 232.755 302.041 232.61 -301.186 -gcp 536.327 286.224 535.365 -284.79 -gcp 519.49 250 518.97 -250.868 -gcp 621.02 217.857 619.322 -216.946 "/home/roxana/working_through_GeoprocessingWithPython/myaerial.tif" "/tmp/myaerial.tif"
+gdalwarp -r near -order 1 -co COMPRESS=NONE  "/tmp/myaerial.tif" "/home/roxana/working_through_GeoprocessingWithPython/usingGCPs"
+SyntaxError: invalid syntax
+>>> gdal.translate.ofGTiff -gcp 232.755 302.041 232.61 -301.186 -gcp 536.327 286.224 535.365 -284.79 -gcp 519.49 250 518.97 -250.868 -gcp 621.02 217.857 619.322 -216.946 "/home/roxana/working_through_GeoprocessingWithPython/myaerial.tif" "/tmp/myaerial.tif"
+gdalwarp -r near -order 1 -co COMPRESS=NONE  "/tmp/myaerial.tif" "/home/roxana/working_through_GeoprocessingWithPython/usingGCPs"
+SyntaxError: invalid syntax
+>>> gdalwarp
+
+Traceback (most recent call last):
+  File "<pyshell#69>", line 1, in <module>
+    gdalwarp
+NameError: name 'gdalwarp' is not defined
+>>> import gdalwarp
+
+Traceback (most recent call last):
+  File "<pyshell#70>", line 1, in <module>
+    import gdalwarp
+ImportError: No module named gdalwarp
+>>> gcps = [(gdal.GCP(232.6, -298.4,0, 233, 302),
+	 gdal.GCP(535.1, -283.1, 0, 536, 286),
+	 gdal.GCP(518.7, -248.6, 0, 519, 250),
+	 619, -215.3, 0, 621, 218)]
+>>> ds.GetGCPCount()
+0
+>>> ds.SetMetadata(gcps)
+
+Traceback (most recent call last):
+  File "<pyshell#73>", line 1, in <module>
+    ds.SetMetadata(gcps)
+  File "/usr/lib/python2.7/dist-packages/osgeo/gdal.py", line 405, in SetMetadata
+    return _gdal.MajorObject_SetMetadata(self, *args)
+TypeError: sequence must contain strings
+>>> ds.SetGCPs(gcps, 4, sr.ExportToWkt())
+
+Traceback (most recent call last):
+  File "<pyshell#74>", line 1, in <module>
+    ds.SetGCPs(gcps, 4, sr.ExportToWkt())
+  File "/usr/lib/python2.7/dist-packages/osgeo/gdal.py", line 859, in SetGCPs
+    return _gdal.Dataset_SetGCPs(self, *args)
+TypeError: Dataset_SetGCPs() takes exactly 3 arguments (4 given)
+>>> 
